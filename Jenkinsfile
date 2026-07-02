@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // This tells Jenkins to look for your global Maven installation
-        maven 'maven 3' 
+        maven 'maven-3' 
     }
 
     stages {
@@ -17,14 +17,14 @@ pipeline {
         stage('Compile & Build') {
             steps {
                 // Actually runs Maven instead of just printing text
-                sh 'mvn clean compile'
+                sh 'mvnw clean compile'
             }
         }
 
         stage('Execute Unit Tests') {
             steps {
                 // Actually runs your Java unit tests
-                sh 'mvn test'
+                sh 'mvnw test'
             }
         }
     }
