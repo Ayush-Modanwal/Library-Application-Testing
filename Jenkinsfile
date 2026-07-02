@@ -17,14 +17,14 @@ pipeline {
         stage('Compile & Build') {
             steps {
                 // Actually runs Maven instead of just printing text
-                sh 'mvnw clean compile'
+                sh 'mvn clean compile'
             }
         }
 
         stage('Execute Unit Tests') {
             steps {
                 // Actually runs your Java unit tests
-                sh 'mvnw test'
+                sh 'mvn test'
             }
         }
     }
