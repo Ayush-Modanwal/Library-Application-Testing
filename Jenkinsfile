@@ -2,26 +2,28 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.x' // Make sure this matches your Jenkins Global Tool Configuration name
+        // This tells Jenkins to look for your global Maven installation
+        maven 'Maven 3.x' 
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Source Code') {
             steps {
+                // We explicitly define your new repository URL here
                 git branch: 'master', url: 'https://github.com/Ayush-Modanwal/Library-Application-Testing.git'
             }
         }
 
         stage('Compile & Build') {
             steps {
-                // This tells Jenkins to actually compile the Java code
+                // Actually runs Maven instead of just printing text
                 sh 'mvn clean compile'
             }
         }
 
         stage('Execute Unit Tests') {
             steps {
-                // This tells Jenkins to run your test classes
+                // Actually runs your Java unit tests
                 sh 'mvn test'
             }
         }
